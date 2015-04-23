@@ -43,6 +43,8 @@ booking_time
 - available time is removed (1 hour blocks)
 - restaurant's capacity updates per reservation amount
 	- when capacity equals 0, no reservations available
+- capacity = capacity - party_size
+	- if capacity < party_size then not possible(create method)
 - 
 
 
