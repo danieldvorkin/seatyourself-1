@@ -39,3 +39,10 @@ name
 party_size
 booking_time
 
+- user can make reservation
+- available time is removed (1 hour blocks)
+- restaurant's capacity updates per reservation amount
+	- when capacity equals 0, no reservations available
+- 
+
+
