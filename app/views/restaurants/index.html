@@ -1,7 +1,19 @@
-### INDEX ###
-<% if !current_user %>
-	<%= link_to 'Sign In', "/sessions/new" %>
-<% elsif current_user %>
-	<%= link_to 'Logout', "/restaurants" %>
-	<%= link_to 'Make Resy', "/restaurants/:restaurant_id" %>
+<h1>Welcome to Seat Your Self </h1>
+<% if current_user %>
+<%@restaurants.each do |r| %>
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><%= r.name %>
+        </a><div class="btn btn-default"><%= link_to 'Make A Resy', "/restaurants/#{r.id}" %></div>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+       	Details
+      </div>
+    </div>
+  </div>
+  <% end %>
 <% end %>
