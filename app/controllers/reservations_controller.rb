@@ -6,12 +6,11 @@ class ReservationsController < ApplicationController
   def create
   	@restaurant = load_rest
   	@reservation = @restaurant.reservations.build(res_params)
-  	@reservation.user = current_user
 
   	if @reservation.save
-  		redirect_to root_path, notice: "Reservation created successfully"
+      redirect_to root_path(@restaurant, @reservation), notice: 'Review created successfully'
   	else
-  		render 'restaurants/show'
+  		render 'restaurants'
   	end
   end
 
@@ -23,10 +22,10 @@ class ReservationsController < ApplicationController
 
   private
   def res_params
-  	params.require(:reservation).permit(:name, :party_size, :booking_time)
+  	params.require(:reservation).permit(:name, :party_size, :booking_time, :restaurant_id)
   end
 
-  def load_rest
+  def load_rest   
   	@restaurant = Restaurant.find(params[:restaurant_id])
   end
 end

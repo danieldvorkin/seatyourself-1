@@ -1,6 +1,7 @@
 ### INDEX ###
-<% if current_user == nil %>
-	<%= link_to 'Sign Up', "/users/new" %>
-<% else %>
-	<%= link_to 'Make Resy', "/reservations/new" %>
+<% if !current_user %>
+	<%= link_to 'Sign In', "/sessions/new" %>
+<% elsif current_user %>
+	<%= link_to 'Logout', "/restaurants" %>
+	<%= link_to 'Make Resy', "/restaurants/:restaurant_id" %>
 <% end %>
